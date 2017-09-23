@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
  *
  *
  */
-public class FXMLDocumentController /*implements Initializable*/ {
+public class FXMLDocumentController {
     
     private double num1 ;
     private boolean isOperationSet = false;
@@ -50,6 +50,8 @@ public class FXMLDocumentController /*implements Initializable*/ {
     @FXML
     private void handleOperatorAction(ActionEvent event) {
         
+        // Comparing Objects with '==' and '.equals()' are DIFFERENT ! Carefull !
+        // Here it wouldnt work if we used '==' to compare
         if (((Button)event.getSource()).getText().equals("C")){
             output.setText("");
             value1 = "";
@@ -57,6 +59,9 @@ public class FXMLDocumentController /*implements Initializable*/ {
             return;
         }
         else if (((Button)event.getSource()).getText().equals("=")) {
+            
+            // stringtoCalc.eval(String str); Evaluates the string and returns the 
+            // result of the operation as double
             num1 = stringtoCalc.eval(value1);
             output.setText(String.valueOf(num1));
             output2.setText(value1 + "=" + String.valueOf(num1));
@@ -69,4 +74,19 @@ public class FXMLDocumentController /*implements Initializable*/ {
         value1 = value1 + ((Button)event.getSource()).getText();
         output.setText(value1);
     }
+    /*  Returns the string representation of the {@code double} argument.
+     *   
+     *   public static String valueOf(double d) {
+     *      return Double.toString(d);
+     *   }
+     *   
+     *   public static String valueOf(long l) {
+     *       return Long.toString(l);
+     *   }
+     * 
+     *   public static String valueOf(float f) {
+     *       return Float.toString(f);
+     *   }
+     *
+     */
 }
