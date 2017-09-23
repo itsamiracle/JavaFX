@@ -5,9 +5,11 @@ package calculator;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,9 +19,13 @@ import javafx.stage.StageStyle;
  *
  */
 public class JavaFXML_MyCalculator extends Application {
+    
     private double xOffset;
     private double yOffset;
-
+    @FXML
+    private Button button1;
+    
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -43,6 +49,9 @@ public class JavaFXML_MyCalculator extends Application {
         Scene scene = new Scene(root);
         scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
         stage.setScene(scene);
+        // ADDING THE CSS FILE TO OUR SCENE
+        scene.getStylesheets().add
+        (JavaFXML_MyCalculator.class.getResource("calculator_css.css").toExternalForm());
         stage.show();
     }
 
