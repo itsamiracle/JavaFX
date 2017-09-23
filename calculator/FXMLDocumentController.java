@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
@@ -18,11 +19,13 @@ import javafx.scene.text.Text;
  */
 public class FXMLDocumentController {
     
-    private double num1 ;
+    private double num1;
     private boolean isOperationSet = false;
     private String value1 = new String();
     @FXML
-    private Button exit;
+    private Button exit,button1;
+    // promptText="Gimme Calculations" can be set in the XML file 
+    // shows the String when no input is given
     @FXML
     private TextField output;
     @FXML
@@ -30,6 +33,37 @@ public class FXMLDocumentController {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
+        
+        /*  When we do Object1 = Object2; , it will pass only the adress 
+         *  That means we wont coppy the whole object, we just coppied the pointer
+         *  Using this property now : event.getSource() returns an Event Object 
+         *  The object on which the Event initially occurred.
+         *  We type cast it to a Button object ->  (Button)event.getSource();
+         *  then giving the reference to tempButton 
+         *  --- this way we can use all the Button Methods on every button pressed --- 
+         *  like this : 
+         */
+        Button tempButton = (Button)event.getSource();
+        tempButton.setStyle("-fx-background-color: #FF0000");
+        tempButton.setPrefHeight(30);
+        
+        /*  If we want to change only some specific buttons 
+         *  We need to give them an fx:id first (in scene builder OR in the XML document)
+         *  Like this : <Button fx:id="button1" layout.../>
+         *  Then declaring them in our Controler class with '@FXML' : 
+         *       @FXML
+         *       private Button exit,button1;
+         *  then we can access all the Button Methods from the button we want to modify
+         *  like this :
+         */
+        if((Button)event.getTarget() == button1) {  // if button1 is the Target Object
+                                                    // (clicked , dragged , etc)
+            button1.setId("button1");               // Relevant for CSS files
+            button1.setVisible(false);
+        }
+        
+        
+        
         if(event.getTarget() == exit)
             Platform.exit();
         
@@ -43,9 +77,8 @@ public class FXMLDocumentController {
             value1 = value1 + ((Button)event.getSource()).getText();
             output.setText(value1);
             //System.out.println(value1);
-            
-        }
         
+        }
     
     @FXML
     private void handleOperatorAction(ActionEvent event) {
