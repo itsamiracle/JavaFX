@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="391.0" prefWidth="337.0" style="-fx-background-color: #3D4956; -fx-background-radius: 20,20,20,20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.FXMLDocumentController">
     <children>
-        <Button layoutX="9.0" layoutY="129.0" onAction="#handleButtonAction" prefHeight="62.0" prefWidth="62.0" text="1" />
+        <Button fx:id="button1" layoutX="9.0" layoutY="129.0" onAction="#handleButtonAction" prefHeight="62.0" prefWidth="62.0" text="1" />
       <Text fx:id="output2" fill="RED" layoutX="24.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0" />
       <Button layoutX="70.0" layoutY="129.0" onAction="#handleButtonAction" prefHeight="62.0" prefWidth="62.0" text="2" />
       <Button layoutX="131.0" layoutY="129.0" onAction="#handleButtonAction" prefHeight="62.0" prefWidth="62.0" text="3" />
@@ -31,7 +31,7 @@
       <Button layoutX="264.0" layoutY="250.0" onAction="#handleOperatorAction" prefHeight="62.0" prefWidth="62.0" text="*" />
       <Button layoutX="264.0" layoutY="189.0" onAction="#handleOperatorAction" prefHeight="62.0" prefWidth="62.0" text="-" />
       <Button layoutX="264.0" layoutY="128.0" onAction="#handleOperatorAction" prefHeight="62.0" prefWidth="62.0" text="+" />
-      <TextField fx:id="output" layoutX="74.0" layoutY="62.0" prefHeight="42.0" prefWidth="189.0">
+      <TextField fx:id="output" layoutX="74.0" layoutY="62.0" prefHeight="42.0" prefWidth="189.0" promptText="Gimme Calculations">
          <font>
             <Font name="KacstPoster" size="15.0" />
          </font>
