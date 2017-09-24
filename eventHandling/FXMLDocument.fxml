@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="348.0" style="-fx-background-color: PINK; -fx-background-radius: 150,150,150,150;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eventHandling.FXMLDocumentController">
+   <children>
+      <Button fx:id="sendButton" layoutX="150.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#handleClick" onMousePressed="#handlePressAction" onMouseReleased="#handleRelease" text="Send" />
+      <TextField fx:id="textField" layoutX="89.0" layoutY="131.0" />
+      <Label layoutX="122.0" layoutY="101.0" text="Enter your age :" />
+   </children>
+</AnchorPane>
