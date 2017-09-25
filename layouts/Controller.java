@@ -36,6 +36,8 @@ public class Controller implements Initializable {
     private ComboBox<String> comboBox;
     @FXML
     private ListView<String> listView;
+    @FXML
+    private TreeView<String> treeView;
 
     /**
       *   Getting the Text of the button/ChoiceBox which was clicked / pressed / release / etc
@@ -75,9 +77,19 @@ public class Controller implements Initializable {
     @FXML
     private void handleListAction(MouseEvent event){
 
-        //System.out.println("Items selected : " + listView.getSelectionModel().getSelectedItems().toString());
+        /* Whenever we click the list , it will call this function.
+         * We can access the items selected with : listView.getSelectionModel().getSelectedItems()
+         *
+         * We can also add a button under the list and whenever we click the button we will get back
+         * the items selected
+         *
+         * All the list we work with in JavaFX is of type ObservableList<>
+         */
 
-        buttonSubmit.setOnAction(e -> {
+        System.out.println("Items selected by clicking the list: "
+                + listView.getSelectionModel().getSelectedItems().toString());
+
+        buttonSubmit.setOnMouseClicked(e -> {
             String message = "";
             ObservableList<String> movies ;
             movies = listView.getSelectionModel().getSelectedItems();
@@ -85,8 +97,19 @@ public class Controller implements Initializable {
             for(String m : movies){
                 message += m + " ";
             }
-            System.out.println("After button click : " + message);
+            System.out.println("Items selected by clicking the button : " + message);
         });
+        if(event.getSource() == treeView){
+            // handle the event if treeView will be clicked
+            treeView.setOnMouseClicked(e -> {
+                System.out.println("TREE VIEW: " + treeView.getSelectionModel().getSelectedItems().toString());
+
+            });
+            // another way of getting clicked values
+            treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+                System.out.println(newValue.getValue());
+            });
+        }
 
     }
 
@@ -114,6 +137,26 @@ public class Controller implements Initializable {
          */
         listView.getItems().addAll("Iron Man", "Spiderman","Titanic","Alien","Lord of War");
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        /*  TreeView , root , branches can have other branches , leaf
+         *  We have to declare the items inside the treeView
+         *
+         */
+        TreeItem<String> root,branch2,branch,childBranch,leaf;
+
+        root = new TreeItem<>("root1");
+        branch2 = new TreeItem<>("branch2");
+        branch = new TreeItem<>("branch");
+        childBranch = new TreeItem<>("childBranch");
+        leaf = new TreeItem<>("leaf");
+
+        root.setExpanded(true);                     // expand (show) everything by default
+
+        treeView.setRoot(root);                     // setting the root of our treeView
+        root.getChildren().add(branch);             // telling who will be the child of a node
+        root.getChildren().add(branch2);            // a node can have multiple children
+        branch.getChildren().add(childBranch);
+        childBranch.getChildren().add(leaf);
 
     }
 }
