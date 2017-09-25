@@ -63,7 +63,7 @@
       </HBox>
    </top>
    <left>
-      <TreeView prefHeight="659.0" prefWidth="154.0" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="treeView" onMouseClicked="#handleListAction" prefHeight="659.0" prefWidth="154.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
