@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sharedBox.ControllerMain">
+   <children>
+      <Button fx:id="gotoLogin" layoutX="38.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Logout" />
+      <TreeView layoutY="75.0" prefHeight="476.0" prefWidth="238.0" />
+      <Line endX="700.0" fill="BLACK" layoutX="101.0" layoutY="552.0" startX="-100.0" strokeLineCap="BUTT" />
+   </children>
+</AnchorPane>
